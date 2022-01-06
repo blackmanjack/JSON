@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import Loader from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 
@@ -10,8 +9,6 @@ function PostDetail() {
   const [loading, setLoading] = useState(false);
 
   let { id } = useParams();
-  // console.log("SLUG", id);
-  // console.log("ID", id);
   console.log("detail");
   useEffect(() => {
     setLoading(true);
@@ -30,8 +27,8 @@ function PostDetail() {
     <>
       {loading ? (
         <>
-          <div className="w-full flex justify-center my-64">
-            <div className="flex-col justify-center space-y-2">
+          <div className="Loadingcontainer w-full flex justify-center my-64">
+            <div className="loader flex-col justify-center space-y-2">
               <Loader
                 type="Bars"
                 color="#032541"
@@ -44,8 +41,8 @@ function PostDetail() {
         </>
       ) : (
         <>
-          <div className="container-detail items-center  flex flex-col md:flex-row flex-1 gap-10 ">
-            <div className="flex flex-wrap w-10/12 justify-center mx-32 mt-4">
+          <div className="container items-center  flex flex-col md:flex-row flex-1 gap-10 ">
+            <div className="postcard flex flex-wrap w-10/12 justify-center mx-32 mt-4">
               <div style={{ fontSize: "24px" }} className="">
                 <span className="font-bold ">{allData.title}</span>
               </div>
@@ -59,15 +56,17 @@ function PostDetail() {
 
                 <p>Comment</p>
                 <div className="border-2 flex flex-col mb-2">
-                  <div className="font-bold">Faiz</div>
-                  <div className="opacity-80">Halo</div>
+                  <div className="font-bold">Username</div>
+                  <div className="opacity-80">Comment body</div>
                 </div>
                 {comment.map((item, index) => {
                   return (
                     <>
                       <div className="border-2 flex flex-col mb-2">
-                        <div className="font-bold">Faiz{item.userId}</div>
-                        <div className="opacity-80">apa lu?{item.body}</div>
+                        <div className="font-bold">Username{item.userId}</div>
+                        <div className="opacity-80">
+                          Comment body{item.body}
+                        </div>
                       </div>
                     </>
                   );
